@@ -12,15 +12,11 @@ for tc in range(T):
         atoms.append([2*x, 2*y, dir, power])
 
     ans = 0
-
     while True:
         atoms_des = []
         for i in range(N):
             a = atoms[i][0]
             b = atoms[i][1]
-            # if atoms[i] in atoms_des:
-            #     continue
-
             if atoms[i][2] == 0:
                 b += 1
             elif atoms[i][2] == 1:
@@ -29,7 +25,7 @@ for tc in range(T):
                 a -= 1
             elif atoms[i][2] == 3:
                 a += 1
-            # print('1', a, b)
+
             if abs(a) > 2000 or abs(b) > 2000:
                 atoms_des.append(i)
             else:

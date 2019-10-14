@@ -17,6 +17,8 @@ def next_permutation(a):
         j -= 1
 
     return True
+
+
 n,m = map(int,input().split())
 a = [list(map(int,input().split())) for _ in range(n)]
 people = []

@@ -4,6 +4,8 @@ dy = [-1,0,1,0]
 m,n = map(int,input().split())
 a = [list(map(int,input().split())) for _ in range(n)]
 d = [[0]*m for _ in range(n)]
+
+
 def bfs(x, y, rooms):
     q = deque()
     q.append((x,y))
