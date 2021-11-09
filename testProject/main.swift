@@ -2203,26 +2203,26 @@ import Foundation
 //    arr.append(Array(readLine()!).split(separator: " ").map{Int(String($0))!})
 //}
 
-
-var arr: [[Int]] = [[0, 3, 5, 4, 6, 9, 2, 7, 8],
-                    [7, 8, 2, 1, 0, 5, 6, 0, 9],
-                    [0, 6, 0, 2, 7, 8, 1, 3, 5],
-                    [3, 2, 1, 0, 4, 6, 8, 9, 7],
-                    [8, 0, 4, 9, 1, 3, 5, 0, 6],
-                    [5, 9, 6, 8, 2, 0, 4, 1, 3],
-                    [9, 1, 7, 6, 5, 2, 0, 8, 0],
-                    [6, 0, 3, 7, 0, 1, 9, 5, 2],
-                    [2, 5, 8, 3, 9, 4, 7, 6, 0]]
-var reverseArr:[[Int]] = arr
-for i in 0..<9 {
-    for j in 0..<9 {
-        if i != j {
-            let temp = arr[i][j]
-            reverseArr[i][j] = arr[j][i]
-            reverseArr[j][i] = temp
-        }
-    }
-}
+//
+//var arr: [[Int]] = [[0, 3, 5, 4, 6, 9, 2, 7, 8],
+//                    [7, 8, 2, 1, 0, 5, 6, 0, 9],
+//                    [0, 6, 0, 2, 7, 8, 1, 3, 5],
+//                    [3, 2, 1, 0, 4, 6, 8, 9, 7],
+//                    [8, 0, 4, 9, 1, 3, 5, 0, 6],
+//                    [5, 9, 6, 8, 2, 0, 4, 1, 3],
+//                    [9, 1, 7, 6, 5, 2, 0, 8, 0],
+//                    [6, 0, 3, 7, 0, 1, 9, 5, 2],
+//                    [2, 5, 8, 3, 9, 4, 7, 6, 0]]
+//var reverseArr:[[Int]] = arr
+//for i in 0..<9 {
+//    for j in 0..<9 {
+//        if i != j {
+//            let temp = arr[i][j]
+//            reverseArr[i][j] = arr[j][i]
+//            reverseArr[j][i] = temp
+//        }
+//    }
+//}
 
 //var hi:[Int] = [1,2,3,4,5,6,7,8,9]
 //
@@ -2261,3 +2261,158 @@ for i in 0..<9 {
 //for i in arr {
 //    print(i)
 //}
+
+
+//func solution(_ s:String) -> Bool
+//{
+//    var ans:Bool = false
+//    var cnt = 0
+//    for ele in s {
+//        if ele == "(" {
+//            cnt += 1
+//        } else {
+//            if cnt <= 0 {
+//                return false
+//            } else {
+//                cnt -= 1
+//            }
+//        }
+//    }
+//    if cnt == 0 {
+//        ans = true
+//    } else {
+//        ans = false
+//    }
+//    return ans
+//}
+//
+//print(solution(")()("))
+
+
+//func solution(_ n:Int) -> Int {
+//    var fibonacci: [Int] = [0, 1]
+//    for i in 2...n {
+//        fibonacci.append((fibonacci[i-1] + fibonacci[i-2]) % 1234567)
+//    }
+//    return fibonacci[n]
+//}
+//
+//print(solution(100000))
+
+
+
+//func solution(_ s:String) -> Int {
+//    var str = s
+//    var answer = 0
+//    for _ in 0..<s.count {
+//        let a = str.removeFirst()
+//        str = str + String(a)
+//        var stack: [String] = []
+//        var check = true
+//        for i in str {
+//            if i == ")" {
+//                if !stack.isEmpty && stack.last! == "(" {
+//                    stack.removeLast()
+//                } else {
+//                    check = false
+//                    break
+//                }
+//            } else if i == "}" {
+//                if !stack.isEmpty && stack.last! == "{" {
+//                    stack.removeLast()
+//                } else {
+//                    check = false
+//                    break
+//                }
+//            } else if i == "]" {
+//                if !stack.isEmpty && stack.last! == "[" {
+//                    stack.removeLast()
+//                } else {
+//                    check = false
+//                    break
+//                }
+//            } else {
+//                stack.append(String(i))
+//            }
+//        }
+//
+//        if !stack.isEmpty {
+//            check = false
+//        }
+//
+//        if check {
+//            answer += 1
+//        }
+//    }
+//    return answer
+//}
+//
+//print(solution("}]()[{"))
+
+
+
+
+//var cnt = 0
+//var N = 0
+//func dfs(check: [Int], saveQueen: [[Int]], n: Int) {
+//    if n == N {
+//        cnt += 1
+//        return
+//    } else {
+//        var check = check
+//        for i in 0..<N {
+//            if check[i] == 0 {
+//                var isSuccess = true
+//                for queen in saveQueen {
+//                    if abs(n - queen[0]) == abs(i - queen[1]) {
+//                        isSuccess = false
+//                        break
+//                    }
+//                }
+//                if isSuccess {
+//                    check[i] = 1
+//                    dfs(check: check, saveQueen: saveQueen + [[n, i]], n: n+1)
+//                    check[i] = 0
+//                }
+//            }
+//        }
+//    }
+//}
+//
+//func solution(_ n:Int) -> Int {
+//    cnt = 0
+//    N = n
+//    dfs(check: Array.init(repeating: 0, count: n), saveQueen: [], n: 0)
+//    return cnt
+//}
+//
+//print(solution(4))
+
+
+func solution(_ operations:[String]) -> [Int] {
+    var queue:[Int] = []
+    for operation in operations {
+        let arr = operation.split(separator: " ")
+        if queue.count == 0, arr[0] == "D" {
+            continue
+        }
+        if arr[0] == "I" {
+            queue.append(Int(arr[1])!)
+        } else if arr[0] == "D" {
+            queue = queue.sorted()
+            if arr[1] == "1" {
+                queue.removeLast()
+            } else if arr[1] == "-1" {
+                queue.removeFirst()
+            }
+        }
+    }
+    queue = queue.sorted()
+    if queue.isEmpty {
+        return [0, 0]
+    } else {
+        return [queue.removeLast(), queue.removeFirst()]
+    }
+}
+
+print(solution(["I 7","I 5","I -5","D -1"]))
