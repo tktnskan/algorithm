@@ -2388,31 +2388,175 @@ import Foundation
 //
 //print(solution(4))
 
+//
+//func solution(_ operations:[String]) -> [Int] {
+//    var queue:[Int] = []
+//    for operation in operations {
+//        let arr = operation.split(separator: " ")
+//        if queue.count == 0, arr[0] == "D" {
+//            continue
+//        }
+//        if arr[0] == "I" {
+//            queue.append(Int(arr[1])!)
+//        } else if arr[0] == "D" {
+//            queue = queue.sorted()
+//            if arr[1] == "1" {
+//                queue.removeLast()
+//            } else if arr[1] == "-1" {
+//                queue.removeFirst()
+//            }
+//        }
+//    }
+//    queue = queue.sorted()
+//    if queue.isEmpty {
+//        return [0, 0]
+//    } else {
+//        return [queue.removeLast(), queue.removeFirst()]
+//    }
+//}
+//
+//print(solution(["I 7","I 5","I -5","D -1"]))
 
-func solution(_ operations:[String]) -> [Int] {
-    var queue:[Int] = []
-    for operation in operations {
-        let arr = operation.split(separator: " ")
-        if queue.count == 0, arr[0] == "D" {
-            continue
-        }
-        if arr[0] == "I" {
-            queue.append(Int(arr[1])!)
-        } else if arr[0] == "D" {
-            queue = queue.sorted()
-            if arr[1] == "1" {
-                queue.removeLast()
-            } else if arr[1] == "-1" {
-                queue.removeFirst()
-            }
-        }
-    }
-    queue = queue.sorted()
-    if queue.isEmpty {
-        return [0, 0]
-    } else {
-        return [queue.removeLast(), queue.removeFirst()]
-    }
-}
 
-print(solution(["I 7","I 5","I -5","D -1"]))
+
+//let a = { (name: String) in
+//    print("Hello, \(name)")
+//}
+//
+//a("hi")
+//print("A")
+
+//public func solution(_ A : inout [Int]) -> Int {
+//    // write your code in Swift 4.2.1 (Linux)
+//    let A = Set(A.filter{ $0 > 0 }).map{ $0 }.sorted()
+//    var lastNum = 0
+//    var check = false
+//    for a in A {
+//        if a - lastNum == 1 {
+//            lastNum = a
+//        } else {
+//            lastNum += 1
+//            check = true
+//            break
+//        }
+//    }
+//    if !check {
+//        lastNum += 1
+//    }
+//    return lastNum
+//}
+
+
+//public func solution(_ S : String) -> Int {
+//    // write your code in Swift 4.2.1 (Linux)
+//    var cntA = 0
+//    var cntB = 0
+//
+//    for i in S {
+//        if i == "A" {
+//            cntA += 1
+//        } else if i == "B" {
+//            cntB += 1
+//        }
+//    }
+//    if cntA == 0 || cntB == 0 {
+//        return 0
+//    }
+//
+//    let arrS = S.map{ String($0) }
+//    var cnt = 0
+//    for i in arrS.indices {
+//        var arrS = arrS
+//        if i == arrS.count - 1 {
+//            continue
+//        }
+//        if arrS[i] + arrS[i+1] == "BA" {
+//            arrS.remove(at: i)
+//            arrS.remove(at: i)
+//            cnt += 1
+//        }
+//    }
+//    print(cnt)
+//
+//    return min(cntA, cntB)
+//}
+//
+//print(solution("BAAABAB"))
+
+//public func solution(_ A : [Int]) -> Int {
+//    // write your code in Swift 4.2.1 (Linux)
+//    var check = Array.init(repeating: 1, count: A.count+1)
+//    check[0] = 0
+//    var lastPoint = 0
+//    var answer = 0
+//    var cnt = 0
+//    for i in A {
+//        check[i] = 0
+//        cnt += 1
+//        if cnt < i {
+//            continue
+//        }
+//        if check[lastPoint+1...i].first(where: {$0 == 1}) == nil {
+//            answer += 1
+//            lastPoint = i
+//        }
+//    }
+//    return answer
+//}
+//
+//var A:[Int] = []
+//for i in 1...100000 {
+//    A.append(i)
+//}
+////print(A)
+//print(solution([1,3,4,2,5]))
+//print(solution([2,3,4,1,5]))
+//print(solution(A.reversed()))
+
+//public func solution(_ A : [Int]) -> Int {
+//    // write your code in Swift 4.2.1 (Linux)
+//    var dict: [Int: [Int]] = [:]
+//
+//    for (idx, value) in A.enumerated() {
+//        if dict[value] == nil {
+//            dict[value] = [idx]
+//        } else {
+//            if let a = dict[value] {
+//                dict[value] = a + [idx]
+//            }
+//        }
+//    }
+//    var answer = 0
+//    for (_, value) in dict {
+//        if value.count >= 2 {
+//            let combiResult = combi(value, 2)
+//            for i in combiResult {
+//                let sum = A[i[0]...i[1]].reduce(0, +)
+//                if sum > answer {
+//                    answer = sum
+//                }
+//            }
+//        }
+//    }
+//    return answer
+//}
+//
+//func combi(_ nums: [Int], _ targetNum: Int) -> [[Int]] {
+//    var result = [[Int]]()
+//
+//    func combination(_ index: Int, _ nowCombi: [Int]) {
+//        if nowCombi.count == targetNum {
+//            result.append(nowCombi)
+//            return
+//        }
+//        for i in index..<nums.count {
+//            combination(i + 1, nowCombi + [nums[i]])
+//        }
+//    }
+//    combination(0, [])
+//    return result
+//}
+//
+//print(solution([1,3,6,1,6,6,9,9]))
+
+
