@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5C053E762601BCA700A39E9A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C053E752601BCA700A39E9A /* main.swift */; };
+		5C3E85ED27574357006DED1F /* landmarkData.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C3E85EB27574347006DED1F /* landmarkData.json */; };
 		5C3FFEC72601BD3700C3F721 /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3FFEC62601BD3700C3F721 /* Car.swift */; };
 		5C3FFECB2601BD4300C3F721 /* CarGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3FFECA2601BD4300C3F721 /* CarGame.swift */; };
 /* End PBXBuildFile section */
@@ -31,6 +32,7 @@
 		5C053E532601BBE200A39E9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5C053E732601BCA700A39E9A /* testProject */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = testProject; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C053E752601BCA700A39E9A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		5C3E85EB27574347006DED1F /* landmarkData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = landmarkData.json; sourceTree = "<group>"; };
 		5C3FFEC62601BD3700C3F721 /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		5C3FFECA2601BD4300C3F721 /* CarGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarGame.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,6 +87,7 @@
 		5C053E742601BCA700A39E9A /* testProject */ = {
 			isa = PBXGroup;
 			children = (
+				5C3E85EB27574347006DED1F /* landmarkData.json */,
 				5C053E752601BCA700A39E9A /* main.swift */,
 				5C3FFEC62601BD3700C3F721 /* Car.swift */,
 				5C3FFECA2601BD4300C3F721 /* CarGame.swift */,
@@ -102,6 +105,7 @@
 				5C053E6F2601BCA700A39E9A /* Sources */,
 				5C053E702601BCA700A39E9A /* Frameworks */,
 				5C053E712601BCA700A39E9A /* CopyFiles */,
+				5C3E85E9275741E1006DED1F /* Resources */,
 			);
 			buildRules = (
 			);
@@ -143,6 +147,17 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5C3E85E9275741E1006DED1F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C3E85ED27574357006DED1F /* landmarkData.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5C053E6F2601BCA700A39E9A /* Sources */ = {
@@ -278,7 +293,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TTMJ6LR737;
+				DEVELOPMENT_TEAM = Q98PMKLR6Q;
 				ENABLE_HARDENED_RUNTIME = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -291,7 +306,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TTMJ6LR737;
+				DEVELOPMENT_TEAM = Q98PMKLR6Q;
 				ENABLE_HARDENED_RUNTIME = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_NAME = "$(TARGET_NAME)";

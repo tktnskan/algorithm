@@ -2560,3 +2560,438 @@ import Foundation
 //print(solution([1,3,6,1,6,6,9,9]))
 
 
+//@propertyWrapper
+//struct Wrapper<T> {
+//    var wrappedValue: T
+//
+//    func foo() {
+//        print("Foo")
+//    }
+//}
+//
+//struct HasWrapper {
+//    @Wrapper var x = 0
+//
+//    func foo() {
+//        print(x)
+//        print(_x)
+////        print($x)
+//    }
+//}
+//
+//HasWrapper().foo()
+
+//
+//func solution(_ words:[String], _ queries:[String]) -> [Int] {
+//    var prefixDict:[String : Int] = [:]
+//    var suffixDict:[String : Int] = [:]
+//    var answer: [Int] = []
+//
+//    if words.reduce("", +) > queries.reduce("", +) {
+//        for query in queries {
+//            let suf = query.suffix(1)
+//            let pre = query.prefix(1)
+//            var count = 0
+//            if suf == "?", pre == "?" {
+//                answer.append(words.filter{ $0.count == query.count }.count)
+//            } else if suf == "?" {
+//                let key:String = String(query.split(separator: "?")[0])
+//                for word in words {
+//                    if query.count == word.count, key == word.prefix(key.count) {
+//                        count += 1
+//                    }
+//                }
+//                answer.append(count)
+//            } else if pre == "?" {
+//                let key:String = String(query.split(separator: "?")[0])
+//                for word in words {
+//                    if query.count == word.count, key == word.suffix(key.count) {
+//                        count += 1
+//                    }
+//                }
+//                answer.append(count)
+//            }
+//        }
+//    } else {
+//        for word in words {
+//            let count = word.count
+//            for i in 1...count {
+//                let key1: String = String(word.prefix(i)) + String(count)
+//                if prefixDict[key1] == nil {
+//                    prefixDict[key1] = 1
+//                } else {
+//                    prefixDict[key1] = prefixDict[key1]! + 1
+//                }
+//
+//                let key2: String = String(word.suffix(i)) + String(count)
+//                if suffixDict[key2] == nil {
+//                    suffixDict[key2] = 1
+//                } else {
+//                    suffixDict[key2] = suffixDict[key2]! + 1
+//                }
+//            }
+//        }
+//
+//        for query in queries {
+//            let suf = query.suffix(1)
+//            let pre = query.prefix(1)
+//            if suf == "?", pre == "?" {
+//                answer.append(words.filter{ $0.count == query.count }.count)
+//            } else if suf == "?" {
+//                let key:String = String(query.split(separator: "?")[0]) + String(query.count)
+//                let value = prefixDict[key]
+//                if value == nil {
+//                    answer.append(0)
+//                } else {
+//                    answer.append(value!)
+//                }
+//            } else if pre == "?" {
+//                let key:String = String(query.split(separator: "?")[0]) + String(query.count)
+//                let value = suffixDict[key]
+//                if value == nil {
+//                    answer.append(0)
+//                } else {
+//                    answer.append(value!)
+//                }
+//            }
+//        }
+//    }
+//
+//    return answer
+//}
+//
+//print(solution(["frodo", "front", "frost", "frozen", "frame", "kakao"], ["fro??", "????o", "fr???", "fro???", "pro?", "?????"]))
+
+
+
+//func soluton(_ p: String, _ n: Int) -> String {
+//    var answer = ""
+//    let pArr = p.components(separatedBy: " ")
+//
+//    print(pArr[1].components(separatedBy: ":"))
+//    return answer
+//}
+//Int.max
+//
+//print(soluton("PM 01:00:00", 10))
+//let a: [String] = ["a"]
+//let b = a.sorted {
+//    (fir, sec) -> Bool in
+//    return fir > sec
+//}
+//let bbb = "1odps2".filter { !$0.isNumber }
+////print(bbb)
+////print("P" < "Z")
+////print(a%3600)
+//print("10:00" < "09:01")
+//
+//let aaa: [Int] = [1,2,4,5,3,3]
+//print(aaa.min())
+//
+
+
+//func solution(_ directory:[String], _ command: [String]) -> [String] {
+//    var directory = directory
+//
+//    for ele in command {
+//        let eleArr = ele.components(separatedBy: " ")
+//        if eleArr[0] == "mkdir" {
+//            var comp = eleArr[1].components(separatedBy: "/")
+//            comp.removeFirst()
+//            if comp.count >= 2 {
+//                let dir = comp.removeLast()
+//                var root = ""
+//                for i in comp {
+//                    root += #"/"# + i
+//                }
+//                print(root)
+//                var count = 0
+//                var check = false
+//                for di in directory {
+//                    if di.contains(root), di > root + "\\\(dir)" {
+//                        print(directory)
+//                        directory.insert(root + "\\\(dir)", at: count)
+//                        print(directory)
+//                        break
+//                    }
+//                    count += 1
+//                }
+//            } else {
+//
+//            }
+//        } else if eleArr[0] == "cp" {
+//
+//        } else if eleArr[0] == "rm" {
+//
+//        }
+//    }
+//
+//    return []
+//}
+//
+//print(solution([
+//    "/",
+//    "/hello",
+//    "/hello/tmp",
+//    "/root",
+//    "/root/abcd",
+//    "/root/abcd/etc",
+//    "/root/abcd/hello"
+//    ], [
+//        "mkdir /root/tmp",
+//        "cp /hello /root/tmp",
+//        "rm /hello"
+//        ]))
+//let myText = #"This is a Backslash: \"#
+//print(myText)
+
+
+//class A {
+//    var b = 5
+//}
+//
+//let a = A()
+//let b = A()
+//
+//b.b = 10
+//
+//print(a.b)
+//print(b.b)
+
+
+//func solution(_ id_list:[String], _ report:[String], _ k:Int) -> [Int] {
+//    var dict:[String:Set<String>] = [:]
+//    var dictCompare:[String:Set<String>] = [:]
+//    for ele in id_list {
+//        dict[ele] = []
+//        dictCompare[ele] = []
+//    }
+//
+//    for re in report {
+//        let arr = re.split(separator: " ")
+//        let toId: String = String(arr[1])
+//        let fromId: String = String(arr[0])
+//        var hi: Set<String> = dict[toId]!
+//        hi.insert(fromId)
+//
+//        var he: Set<String> = dictCompare[fromId]!
+//        he.insert(toId)
+//        dictCompare[fromId] = he
+//        dict[toId] = hi
+//    }
+//    var aa:Set<String> = []
+//    for ele in id_list {
+//        let result = dict[ele]!
+//        if result.count >= k {
+//            aa.insert(ele)
+//        }
+//    }
+//
+//    var result:[Int] = []
+//    for ele in id_list {
+//        let a = dictCompare[ele]!
+//
+//        let common = a.intersection(aa)
+//        result.append(common.count)
+//    }
+//
+//    return result
+//}
+//
+//
+//print(solution(["muzi", "frodo", "apeach", "neo"], ["muzi frodo","apeach frodo","frodo neo","muzi neo","apeach muzi"], 2))
+
+
+
+//let dict: [String: Int] = ["A":1,"B":2,"C":3,"D":4,"E":5,"F":6,"G":7,"H":8,"I":9,"J":10,"K":11,"L":12,"M":13,"N":14,"O":15,"P":16,"Q":17,"R":18,"S":19,"T":20,"U":21,"V":22,"W":23,"X":24,"Y":25,"Z":26]
+//
+//func solution(_ name:String) -> Int {
+//    var name = name
+//    var changeWord = 0
+//
+//    for str in name {
+//        let str = String(str)
+//        let up = dict[str]! - 1
+//        let down = (26 - dict[str]!) + 1
+//
+//        let minValue = min(up, down)
+//        changeWord += minValue
+//    }
+//
+//    let movePoint = name.count - 1
+//    name = name.removeFirst()
+//    var a = "A"
+//    var aCount = 0
+//    for i in 0..<20 {
+//        if name.contains(a) {
+//            aCount = i + 1
+//        }
+//        a += "A"
+//    }
+//
+//    return changeWord + movePoint - aCount
+//}
+
+
+//print(solution("AWAWVAQVAAA"))
+
+
+//func solution(_ N:Int, _ road:[[Int]], _ k:Int) -> Int {
+//
+//    var costMap:[[Int]] = Array(repeating: Array(repeating: 5000000, count: N), count: N)
+//
+//    for i in 0..<N {
+//        costMap[i][i] = 0
+//    }
+//
+//    for ro in road {
+//        let cost = ro[2]
+//        if costMap[ro[0] - 1][ro[1] - 1] > cost {
+//            costMap[ro[0] - 1][ro[1] - 1] = cost
+//            costMap[ro[1] - 1][ro[0] - 1] = cost
+//        }
+//    }
+//
+//    for i in 0..<N {
+//        for j in 0..<N {
+//            for k in 0..<N {
+//                if costMap[j][i] + costMap[i][k] < costMap[j][k]{
+//                    costMap[j][k] = costMap[j][i] + costMap[i][k]
+//                }
+//            }
+//        }
+//    }
+//
+//    var answer = 0
+//    for i in 0..<N {
+//        if costMap[0][i] <= k {
+//            answer += 1
+//        }
+//    }
+//
+//    return answer
+//}
+//
+//
+//
+//print(solution(5, [[1,2,1],[2,3,3],[5,2,2],[1,4,2],[5,3,1],[5,4,2]], 3))
+
+
+//class RPSGame {
+//
+//    enum RPSElement: Int {
+//        case rock = 0
+//        case paper
+//        case scissors
+//    }
+//
+//    enum RPSResult {
+//        case win
+//        case lose
+//        case tie
+//    }
+//
+//    private let numGenerator: RandomNumberGeneratorProtocol
+//    private var gamePoint: Int = 0
+//
+//    init(numGenenerator: RandomNumberGeneratorProtocol) {
+//        self.numGenerator = numGenenerator
+//    }
+//
+//    func resetGame() {
+//        gamePoint = 0
+//    }
+//
+//    func intToRPS(num: Int) -> Result<Int, Error> {
+//        if num == 0 {
+//            return .failure(<#T##Error#>)
+//        } else if
+//    }
+//
+//    func gameStart(user: RPSElement) {
+//
+//    }
+//
+//    private func computerResult() -> RPSElement {
+//        return RPSElement.aa(a: numGenerator.getRandomNumber())
+//    }
+//
+//    func getWinner() {
+//        let computer = computerResult()
+//        if (computer == )
+//    }
+//
+//    func getResultToPoint(userPick: RPSElement, rpsResult: RPSResult) -> Int {
+//        switch rpsResult {
+//        case .win:
+//            return getWinPoint(userPick: userPick)
+//        case .lose, .tie:
+//            return 0
+//        }
+//    }
+//
+//    func getWinPoint(userPick: RPSElement) -> Int {
+//        var point = 0
+//        switch userPick {
+//        case .rock:
+//            point = 1
+//        case .paper:
+//            point = 3
+//        case .scissors:
+//            point = 2
+//        }
+//        return point
+//    }
+//}
+//
+//protocol RandomNumberGeneratorProtocol {
+//    func getRandomNumber() -> Int
+//}
+//
+//class RandomNumberGenerator: RandomNumberGeneratorProtocol {
+//    func getRandomNumber() -> Int {
+//        return Int.random(in: 1...3)
+//    }
+//}
+//
+//let a = RPSGame(numGenenerator: RandomNumberGenerator())
+
+
+
+
+func solution(_ n:Int, _ k:Int, _ cmd:[String]) -> String {
+    var currentLine = k
+    var currentCount = n
+    var recentDelete: [Int] = []
+    
+    for ele in cmd {
+        let a = ele.split(separator: " ").map{ String($0) }
+        
+        if a[0] == "U" {
+            currentLine -= max(Int(a[1])!, 0)
+        } else if a[0] == "D" {
+            currentLine += min(Int(a[1])!, n)
+        } else if a[0] == "C" {
+            recentDelete.append(currentLine)
+            currentCount -= 1
+            if currentLine >= currentCount {
+                currentLine = (currentCount - 1)
+            }
+        } else {
+            if recentDelete.removeLast() <= currentLine {
+                currentLine += 1
+            }
+            currentCount += 1
+        }
+    }
+    
+    var answer:[String] = Array(repeating: "O", count: n)
+   
+    while !recentDelete.isEmpty {
+        answer[recentDelete.removeLast()] = "X"
+    }
+    
+    return answer.joined(separator: "")
+}
+
+print(solution(8, 2, ["D 2","C","U 3","C","D 4","C","U 2","Z","Z"]))
