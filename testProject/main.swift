@@ -2656,10 +2656,42 @@ import Foundation
 //            }
 //        }
 //    }
+
+//func solution(_ n:Int) -> Int {
+//    let arrN = Array(String(n))
+//    let maxVal = arrN.sorted(by: >).map { String($0) }.joined() as NSString
+//    let minVal = arrN.sorted(by: <).map { String($0) }.joined() as NSString
+//
+//    return maxVal.integerValue + minVal.integerValue
+//}
+//
+//print(solution(1000000000))
+//print(85332 + 23358)
+
+//var answer = 1010000
+//var boards:[[Int]] = []
+//var cost = 0
+//func solution(_ board:[[Int]], _ c:Int) -> Int {
+//    var startX = 0, startY = 0
+//    var visit = Array(repeating: Array(repeating: false, count: board[0].count), count: board.count)
+//    boards = board
+//    answer = 1010000
+//    cost = c
+//    for x in 0..<board[0].count {
+//        for y in 0..<board.count {
+//            if board[y][x] == 2 {
+//                startX = x
+//                startY = y
+//            }
+//        }
+//    }
+//    visit[startY][startX] = true
+//    dfs(visit: visit, startX: startX, startY: startY, cnt: 0)
 //
 //    return answer
 //}
 //
+
 //print(solution(["frodo", "front", "frost", "frozen", "frame", "kakao"], ["fro??", "????o", "fr???", "fro???", "pro?", "?????"]))
 
 
@@ -2995,3 +3027,265 @@ func solution(_ n:Int, _ k:Int, _ cmd:[String]) -> String {
 }
 
 print(solution(8, 2, ["D 2","C","U 3","C","D 4","C","U 2","Z","Z"]))
+
+//func dfs(visit: [[Bool]], startX: Int, startY: Int, cnt: Int) {
+//    var visit = visit
+//    if boards[startY][startX] == 3 {
+//        if cnt <= answer {
+//            answer = cnt
+//        }
+//        return
+//    }
+//
+//    if answer < cnt {
+//        return
+//    }
+//
+//    for i in [[0,1], [1,0], [0,-1], [-1,0]] {
+//        let newStartX = startX + i[0]
+//        let newStartY = startY + i[1]
+//        if newStartX >= boards[0].count || newStartX < 0 || newStartY >= boards.count || newStartY < 0 || visit[newStartY][newStartX] {
+//            continue
+//        }
+//        visit[newStartY][newStartX] = true
+//        dfs(visit: visit, startX: newStartX, startY: newStartY, cnt: boards[newStartY][newStartX] == 1 ? cnt + cost + 1 : cnt + 1)
+//        visit[newStartY][newStartX] = false
+//    }
+//}
+
+//struct Location {
+//    var x: Int
+//    var y: Int
+//
+//    init(x: Int, y: Int) {
+//        self.x = x
+//        self.y = y
+//    }
+//}
+//
+//func solution(_ board:[[Int]], _ c:Int) -> Int {
+//    let width = board[0].count
+//    let height = board.count
+//    var visited:[[Bool]] = Array(repeating: Array(repeating: false, count: width), count: height)
+//    var queue: [[Int]] = [[0,0]]
+//    var predecessor: [[[Int]]] = [[[Int]]](repeating: [[Int]](repeating: [-1,-1], count: width), count: height)
+//    var distance: [[Int]] = [[Int]](repeating: [Int](repeating: 99999999, count: width), count: height)
+//
+//    var endX = 0
+//    var endY = 0
+//    for x in 0..<board[0].count {
+//        for y in 0..<board.count {
+//            if board[y][x] == 2 {
+//                queue = [[y, x]]
+//                predecessor[y][x] = [0,0]
+//                distance[y][x] = 0
+//            }
+//            if board[y][x] == 3 {
+//                endY = y
+//                endX = x
+//            }
+//        }
+//    }
+//
+//    let dx: [Int] = [0,0,-1,1]
+//    let dy: [Int] = [-1,1,0,0]
+//
+//    while queue.count != 0 {
+//        let now = queue.remove(at: 0)
+//        if now[0] == 5, now[1] == 1 {
+//
+//        }
+//        if visited[now[0]][now[1]] == false {
+//            visited[now[0]][now[1]] = true
+//            for i in 0..<dx.count {
+//                let nowdx = now[1] - dx[i]
+//                let nowdy = now[0] - dy[i]
+//                if nowdx < 0 || nowdx > width - 1 || nowdy < 0 || nowdy > height - 1 {
+//                    continue
+//                } else {
+//                    predecessor[nowdy][nowdx] = now
+//                    let cost = board[nowdy][nowdx] == 1 ? c + 1 : 1
+//                    if distance[nowdy][nowdx] > distance[now[0]][now[1]] + cost {
+//                        visited[nowdy][nowdx] = false
+//                    }
+//                    distance[nowdy][nowdx] = min(distance[nowdy][nowdx] ,distance[now[0]][now[1]] + cost)
+//                    queue.append([nowdy,nowdx])
+//                }
+//            }
+//        }
+//    }
+//    return distance[endY][endX]
+//}
+//
+//print(solution([ [0,0,0,0,2,0,0,0,0,0],[0,0,1,1,1,1,1,0,0,0],[0,0,1,1,1,1,1,1,0,0],[0,0,1,1,1,1,1,0,1,0],[0,0,1,1,1,1,1,0,0,0],[0,0,0,0,3,0,0,0,1,0]], 2))
+
+
+//let dict = ["A":0, "E":1, "I":2, "O":3, "U":4]
+//func solution(_ word:String) -> Int {
+//    var period = 781
+//    var answer = word.count
+//    for i in word {
+//        let i = String(i)
+//        answer += period * dict[i]!
+//        period = (period - 1) / 5
+//    }
+//    return answer
+//}
+//
+//print(solution("AAAEA"))
+
+
+//var originRock: [Int] = []
+//var answer: Int = 0
+//
+//// 2 11 14 17 21
+////2 9  3 3   4   4
+//func solution(_ distance:Int, _ rocks:[Int], _ n:Int) -> Int {
+//    originRock = rocks
+//    answer = 0
+//    if rocks.count == n {
+//        return distance
+//    }
+//    var arr:[Int] = []
+//    for i in 0..<rocks.count {
+//        arr.append(i)
+//    }
+//    combination(arr, n+1, 0, [])
+//
+//    return answer
+//}
+//
+//func combination(_ target:[Int], _ target_num: Int, _ index: Int,_ tmp:[Int]) {
+//    if tmp.count == target_num{
+//        print(tmp)
+//        return
+//    }
+//
+//    for i in index ..< target.count{
+//        combination(target, target_num, i+1, tmp + [target[i]])
+//    }
+//}
+//
+//solution(25, [2,14,11,21,17], 2)
+
+
+//func solution(_ cacheSize:Int, _ cities:[String]) -> Int {
+//    var newCities: [String] = []
+//
+//    for city in cities {
+//        newCities.append(city.lowercased())
+//    }
+//
+//    var caches: [String: Int] = [:]
+//
+//    var answer = 0
+//    if cacheSize == 0 {
+//        return cities.count * 5
+//    }
+//    while newCities.count > 0 {
+//        let city = newCities.removeFirst()
+//        if caches.count < cacheSize {
+//            if caches[city] != nil {
+//                answer += 1
+//                if caches[city] != 1 {
+//                    let cityIdx = caches[city]
+//                    caches[city] = 1
+//                    for (key, val) in caches {
+//                        if key != city {
+//                            if cityIdx! > val {
+//                                caches[key] = (val + 1)
+//                            }
+//                        }
+//                    }
+//                }
+//            } else {
+//                answer += 5
+//                caches[city] = 1
+//                for (key, val) in caches {
+//                    if key != city {
+//                        caches[key] = (val + 1)
+//                    }
+//                }
+//            }
+//            print(city, caches)
+//        } else {
+//            if city == "Seoul" {
+//                print(city, caches)
+//            }
+//            if caches[city] != nil {
+//                answer += 1
+//                if caches[city] != 1 {
+//                    let cityIdx = caches[city]
+//                    caches[city] = 1
+//                    for (key, val) in caches {
+//                        print(key, val)
+//                        if key == "Pangyo" {
+//
+//                        }
+//                        if key != city {
+//                            if cityIdx! > val {
+//                                caches[key] = (val + 1)
+//                            }
+//                        }
+//                    }
+//
+//                }
+//            } else {
+//                answer += 5
+//                let key = caches.first(where: { $0.value == caches.count })!.key
+//                caches.removeValue(forKey: key)
+//                caches[city] = 1
+//                for (key, val) in caches {
+//                    if key != city {
+//                        caches[key] = (val + 1)
+//                    }
+//                }
+//            }
+//            print(city, caches)
+//        }
+//    }
+//    return answer
+//}
+//
+//print(solution(2, ["Jeju", "Pangyo", "NewYork", "newyork"]))
+
+var visited: [[Bool]] = []
+var answer = 0
+func solution(_ m:Int, _ n:Int, _ board:[String]) -> Int {
+    answer = 0
+    visited = []
+    var newBoard:[[String]] = []
+    for b in board {
+        var tmp: [String] = []
+        for str in b {
+            tmp.append(String(str))
+        }
+        newBoard.append(tmp)
+    }
+    bombBlock(m: m, n: n, board: newBoard)
+    return answer
+}
+
+func findBlock(m: Int, n: Int, board: [[String]]) {
+    for i in 0..<m {
+        for j in 0..<n {
+            if board[i][j] != "*" && board[i][j] == board[i][j-1] && board[i][j] == board[i+1][j] && board[i][j] == board[i+1][j-1] {
+                visited[i][j] = true
+                visited[i+1][j] = true
+                visited[i][j-1] = true
+                visited[i+1][j-1] = true
+            }
+        }
+    }
+}
+
+func bombBlock(m: Int, n: Int, board: [[String]]) {
+    visited = Array.init(repeating: Array.init(repeating: false, count: n), count: m)
+    
+    print(visited)
+    findBlock(m: m, n: n, board: board)
+}
+
+
+print(solution(4, 5, ["CCBDE", "AAADE", "AAABF", "CCBBF"]))
+
