@@ -2991,42 +2991,42 @@ import Foundation
 
 
 
-func solution(_ n:Int, _ k:Int, _ cmd:[String]) -> String {
-    var currentLine = k
-    var currentCount = n
-    var recentDelete: [Int] = []
-    
-    for ele in cmd {
-        let a = ele.split(separator: " ").map{ String($0) }
-        
-        if a[0] == "U" {
-            currentLine -= max(Int(a[1])!, 0)
-        } else if a[0] == "D" {
-            currentLine += min(Int(a[1])!, n)
-        } else if a[0] == "C" {
-            recentDelete.append(currentLine)
-            currentCount -= 1
-            if currentLine >= currentCount {
-                currentLine = (currentCount - 1)
-            }
-        } else {
-            if recentDelete.removeLast() <= currentLine {
-                currentLine += 1
-            }
-            currentCount += 1
-        }
-    }
-    
-    var answer:[String] = Array(repeating: "O", count: n)
-   
-    while !recentDelete.isEmpty {
-        answer[recentDelete.removeLast()] = "X"
-    }
-    
-    return answer.joined(separator: "")
-}
-
-print(solution(8, 2, ["D 2","C","U 3","C","D 4","C","U 2","Z","Z"]))
+//func solution(_ n:Int, _ k:Int, _ cmd:[String]) -> String {
+//    var currentLine = k
+//    var currentCount = n
+//    var recentDelete: [Int] = []
+//
+//    for ele in cmd {
+//        let a = ele.split(separator: " ").map{ String($0) }
+//
+//        if a[0] == "U" {
+//            currentLine -= max(Int(a[1])!, 0)
+//        } else if a[0] == "D" {
+//            currentLine += min(Int(a[1])!, n)
+//        } else if a[0] == "C" {
+//            recentDelete.append(currentLine)
+//            currentCount -= 1
+//            if currentLine >= currentCount {
+//                currentLine = (currentCount - 1)
+//            }
+//        } else {
+//            if recentDelete.removeLast() <= currentLine {
+//                currentLine += 1
+//            }
+//            currentCount += 1
+//        }
+//    }
+//
+//    var answer:[String] = Array(repeating: "O", count: n)
+//
+//    while !recentDelete.isEmpty {
+//        answer[recentDelete.removeLast()] = "X"
+//    }
+//
+//    return answer.joined(separator: "")
+//}
+//
+//print(solution(8, 2, ["D 2","C","U 3","C","D 4","C","U 2","Z","Z"]))
 
 //func dfs(visit: [[Bool]], startX: Int, startY: Int, cnt: Int) {
 //    var visit = visit
@@ -3249,43 +3249,178 @@ print(solution(8, 2, ["D 2","C","U 3","C","D 4","C","U 2","Z","Z"]))
 //
 //print(solution(2, ["Jeju", "Pangyo", "NewYork", "newyork"]))
 
-var visited: [[Bool]] = []
-var answer = 0
-func solution(_ m:Int, _ n:Int, _ board:[String]) -> Int {
-    answer = 0
-    visited = []
-    var newBoard:[[String]] = []
-    for b in board {
-        var tmp: [String] = []
-        for str in b {
-            tmp.append(String(str))
-        }
-        newBoard.append(tmp)
-    }
-    bombBlock(m: m, n: n, board: newBoard)
-    return answer
+//var visited: [[Bool]] = []
+//var answer = 0
+//func solution(_ m:Int, _ n:Int, _ board:[String]) -> Int {
+//    answer = 0
+//    visited = []
+//    var newBoard:[[String]] = []
+//    for b in board {
+//        var tmp: [String] = []
+//        for str in b {
+//            tmp.append(String(str))
+//        }
+//        newBoard.append(tmp)
+//    }
+//    bombBlock(m: m, n: n, board: newBoard)
+//    return answer
+//}
+//
+//func findBlock(m: Int, n: Int, board: [[String]]) {
+//    for i in 0..<m {
+//        for j in 0..<n {
+//            if board[i][j] != "*" && board[i][j] == board[i][j-1] && board[i][j] == board[i+1][j] && board[i][j] == board[i+1][j-1] {
+//                visited[i][j] = true
+//                visited[i+1][j] = true
+//                visited[i][j-1] = true
+//                visited[i+1][j-1] = true
+//            }
+//        }
+//    }
+//}
+//
+//func bombBlock(m: Int, n: Int, board: [[String]]) {
+//    visited = Array.init(repeating: Array.init(repeating: false, count: n), count: m)
+//
+//    print(visited)
+//    findBlock(m: m, n: n, board: board)
+//}
+//
+//
+//print(solution(4, 5, ["CCBDE", "AAADE", "AAABF", "CCBBF"]))
+//
+
+
+// 괄호변환
+
+//func solution(_ p:String) -> String {
+//    var ans = ""
+//    var u:String = ""
+//    var v:String = ""
+//    var left = 0
+//    var right = 0
+//    if p.count == 0 {
+//        return ans
+//    }
+//    for idx in 0..<p.count {
+//        let val = p[idx...idx]
+//        if val == "(" {
+//            left += 1
+//        } else if val == ")" {
+//            right += 1
+//        }
+//
+//        if left != 0 && left == right {
+//            u = p[0...idx]
+//            if p.count-1 >= idx+1 {
+//                v = p[idx+1...p.count-1]
+//            }
+//            break
+//        }
+//    }
+//
+//    if isGood(p: u) {
+//        ans += u
+//        ans += solution(v)
+//    } else {
+//        ans += "("
+//        ans += solution(v)
+//        ans += ")"
+//        if u.count > 1 {
+//            for i in 1..<u.count-1 {
+//                if u[i...i] == "(" {
+//                    ans += ")"
+//                }
+//                if u[i...i] == ")" {
+//                    ans += "("
+//                }
+//            }
+//        }
+//    }
+//
+//    return ans
+//}
+//
+//func isGood(p: String) -> Bool {
+//    var cnt = 0
+//    for str in p {
+//        if str == ")" && cnt == 0 {
+//            return false
+//        } else if str == "(" {
+//            cnt += 1
+//        } else {
+//            cnt -= 1
+//        }
+//    }
+//    if cnt == 0 {
+//        return true
+//    }
+//    return false
+//}
+//
+//extension String {
+//    // MARK: - 스트링 원하는 인텍스만 뽑기 [start...end]
+//    subscript (bounds: CountableClosedRange<Int>) -> String {
+//        if self.count < bounds.lowerBound || self.count < bounds.upperBound || bounds.lowerBound > bounds.upperBound { return self }
+//        let start = index(startIndex, offsetBy: bounds.lowerBound)
+//        let end = index(startIndex, offsetBy: bounds.upperBound)
+//        return String(self[start...end])
+//    }
+//
+//    // MARK: - 스트링 원하는 인텍스만 뽑기 [start..<end]
+//    subscript (bounds: CountableRange<Int>) -> String {
+//        if self.count < bounds.lowerBound || self.count < bounds.upperBound || bounds.lowerBound >= bounds.upperBound { return self }
+//        let start = index(startIndex, offsetBy: bounds.lowerBound)
+//        let end = index(startIndex, offsetBy: bounds.upperBound)
+//        return String(self[start..<end])
+//    }
+//}
+//
+//print(solution("()))((()"))
+
+
+//func solution(_ food_times:[Int], _ k:Int64) -> Int {
+//    if food_times.reduce(0, +) <= k {
+//        return -1
+//    }
+//    var k: Int = Int(k)
+//    var queue:[(foodTime: Int, idx: Int)] = []
+//    queue = food_times.enumerated().map { ($1, $0) }.sorted(by: <)
+//    print(queue)
+//
+//    var i = 0, j = 0, cycle = 0
+//
+//    while i < queue.count {
+//        j = i
+//
+//        while j < queue.count && queue[i].foodTime == queue[j].foodTime {
+//            j += 1
+//        }
+//
+//        let eats = queue[i].foodTime - cycle
+//        let dec = (queue.count - i) * eats
+//        if dec > k {
+//            break
+//        }
+//
+//        k -= dec
+//        cycle += eats
+//        i = j
+//    }
+//
+//    queue = queue[i...].sorted { $0.idx < $1.idx }
+//    k = k % queue.count
+//
+//    return queue[k].idx + 1
+//}
+//
+//
+//print(solution([3, 1, 2], 5))
+//
+
+
+func solution(_ N:Int, _ number:Int) -> Int {
+    return 0
 }
 
-func findBlock(m: Int, n: Int, board: [[String]]) {
-    for i in 0..<m {
-        for j in 0..<n {
-            if board[i][j] != "*" && board[i][j] == board[i][j-1] && board[i][j] == board[i+1][j] && board[i][j] == board[i+1][j-1] {
-                visited[i][j] = true
-                visited[i+1][j] = true
-                visited[i][j-1] = true
-                visited[i+1][j-1] = true
-            }
-        }
-    }
-}
-
-func bombBlock(m: Int, n: Int, board: [[String]]) {
-    visited = Array.init(repeating: Array.init(repeating: false, count: n), count: m)
-    
-    print(visited)
-    findBlock(m: m, n: n, board: board)
-}
-
-
-print(solution(4, 5, ["CCBDE", "AAADE", "AAABF", "CCBBF"]))
-
+print(solution(5, 12))
